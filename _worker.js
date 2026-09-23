@@ -20,7 +20,6 @@ export default {
     // 处理 WebSocket 升级请求（联机模式需要）
     const upgrade = request.headers.get('Upgrade');
     if (upgrade && upgrade.toLowerCase() === 'websocket') {
-      const wsTarget = target.replace(/^https:/, 'wss:');
       const wsReq = new Request(wsTarget, request);
       wsReq.headers.set('Host', SUPABASE_HOST);
       return fetch(wsReq);
